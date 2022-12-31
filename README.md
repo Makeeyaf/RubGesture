@@ -15,6 +15,7 @@ import RubGesture
 ## Requirement 
 - iOS 14.0+
 - macOS 11.0+ 
+- SwiftUI
 
 ## Installation
 
