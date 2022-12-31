@@ -27,7 +27,7 @@ struct ContentView: View {
                 .imageScale(.large)
                 .padding(60)
                 .onRubGesture { length in
-                    let index = Int(length / 200) % (moonPhases.count)
+                    let index = Int(1 + (length / 200)) % (moonPhases.count)
                     if index != moonPhaseIndex {
                         moonPhaseIndex = index
                     }
