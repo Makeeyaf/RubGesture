@@ -1,22 +1,40 @@
-//
-//  ContentView.swift
-//  Example
-//
-//  Created by Makeeyaf on 2022/12/30.
-//
-
 import SwiftUI
 import RubGesture
 
 struct ContentView: View {
+    @State var moonPhaseIndex: Int = 1
+    
+    let moonPhases: [String] = [
+        "moonphase.new.moon",
+        "moonphase.waxing.crescent",
+        "moonphase.first.quarter",
+        "moonphase.waxing.gibbous",
+        "moonphase.full.moon",
+        "moonphase.waning.gibbous",
+        "moonphase.last.quarter",
+        "moonphase.waning.crescent",
+    ]
+    
+    var moonPhase: String {
+        moonPhases[moonPhaseIndex]
+    }
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
+            Image(systemName: moonPhase)
+                .resizable()
+                .scaledToFit()
                 .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+                .padding(60)
+                .onRubGesture { length in
+                    let index = Int(length / 200) % (moonPhases.count)
+                    if index != moonPhaseIndex {
+                        moonPhaseIndex = index
+                    }
+                }
+            Text("Rub me tender\nRub me sweat")
+                .font(.title)
         }
-        .padding()
     }
 }
 
